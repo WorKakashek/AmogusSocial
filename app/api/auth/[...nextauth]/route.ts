@@ -17,4 +17,4 @@ const handler = NextAuth(options);
 
 const getAuthSession = () => getServerSession(options);
 
-export { handler as GET, handler as POST, prisma, getAuthSession };
+export { handler as GET, handler as POST, getAuthSession };
