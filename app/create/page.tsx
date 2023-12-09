@@ -10,11 +10,14 @@ import {
   getDownloadURL,
 } from "firebase/storage";
 import { app } from "@/utils/firebase";
+interface IFile {
+  name: string;
+}
 const create = () => {
   const { data, status } = useSession();
   const router = useRouter();
 
-  const [file, setFile] = useState<File | null>(null);
+  const [file, setFile] = useState<IFile | null>(null);
   const [media, setMedia] = useState("");
   const [desc, setDesc] = useState("");
   const [title, setTitle] = useState("");
@@ -24,9 +27,10 @@ const create = () => {
 
   useEffect(() => {
     const upLoad = () => {
+      //@ts-ignore
       const name = new Date().getTime + file.name;
       const storageRef = ref(storage, name);
-
+      //@ts-ignore
       const uploadTask = uploadBytesResumable(storageRef, file);
 
       // Register three observers:
@@ -81,7 +85,7 @@ const create = () => {
     );
   }
 
-  const slugify = (str) => {
+  const slugify = (str: string) => {
     str
       .toLowerCase()
       .trim()

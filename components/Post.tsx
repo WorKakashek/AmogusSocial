@@ -6,7 +6,7 @@ import PostComments from "./PostComments";
 import Link from "next/link";
 
 export interface IPost {
-  id: number;
+  _id: number;
   avatar: string;
   createAt: string;
   title: string;

@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 import { getAuthSession } from "../auth/[...nextauth]/route";
 
 // get all comments
-export const GET = async (req) => {
+export const GET = async (req: any) => {
   const { searchParams } = new URL(req.url);
 
   const postSlug = searchParams.get("postSlug");
@@ -16,24 +16,22 @@ export const GET = async (req) => {
       include: { user: true },
     });
 
-    return new NextResponse(JSON.stringify(comments, { status: 200 }));
+    return new NextResponse(JSON.stringify(comments));
   } catch (err) {
     // console.log(err);
     return new NextResponse(
-      JSON.stringify({ message: "Something went wrong!" }, { status: 500 })
+      JSON.stringify({ message: "Something went wrong!" })
     );
   }
 };
 //create comment
-export const POST = async (req) => {
+export const POST = async (req: any) => {
   const { searchParams } = new URL(req.url);
   const session = await getAuthSession();
   const postSlug = searchParams.get("postSlug");
 
   if (!session) {
-    return new NextResponse(
-      JSON.stringify({ message: "Not Authentificated" }, { status: 401 })
-    );
+    return new NextResponse(JSON.stringify({ message: "Not Authentificated" }));
   }
 
   try {
@@ -42,11 +40,11 @@ export const POST = async (req) => {
       data: { ...body, userEmail: session.user?.email },
     });
     console.log(body);
-    return new NextResponse(JSON.stringify(comment, { status: 200 }));
+    return new NextResponse(JSON.stringify(comment));
   } catch (err) {
     // console.log(err);
     return new NextResponse(
-      JSON.stringify({ message: "Something went wrong!" }, { status: 500 })
+      JSON.stringify({ message: "Something went wrong!" })
     );
   }
 };

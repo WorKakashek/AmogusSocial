@@ -24,8 +24,8 @@ const Posts = async ({ page }: IPosts) => {
       {posts ? (
         posts.map((post: IPost) => (
           <Post
-            key={posts._id}
-            id={post._id}
+            key={post._id}
+            _id={post._id}
             avatar={post.avatar}
             createAt={post.createAt}
             title={post.title}

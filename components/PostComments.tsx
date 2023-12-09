@@ -7,7 +7,7 @@ import Image from "next/image";
 interface IPostComments {
   postSlug: String;
 }
-const fetcher = async (url) => {
+const fetcher = async (url: any) => {
   const res = await fetch(url);
 
   const data = await res.json();

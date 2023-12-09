@@ -11,13 +11,11 @@ export const GET = async () => {
   }
 };
 //create post
-export const POST = async (req) => {
+export const POST = async (req: any) => {
   const session = await getAuthSession();
   if (!session) {
     console.log("залупа");
-    return new NextResponse(
-      JSON.stringify({ message: "Not auth" }, { staus: 401 })
-    );
+    return new NextResponse(JSON.stringify({ message: "Not auth" }));
   }
 
   try {
@@ -25,11 +23,11 @@ export const POST = async (req) => {
     const post = await prisma.post.create({
       data: { ...body, userEmail: session.user?.email },
     });
-    return new NextResponse(JSON.stringify(post, { staus: 200 }));
+    return new NextResponse(JSON.stringify(post));
   } catch (err) {
     console.log(err);
     return new NextResponse(
-      JSON.stringify({ message: "Something went wrong!" }, { status: 500 })
+      JSON.stringify({ message: "Something went wrong!" })
     );
   }
 };
