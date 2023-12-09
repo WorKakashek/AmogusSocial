@@ -13,7 +13,7 @@ import { app } from "@/utils/firebase";
 interface IFile {
   name: string;
 }
-const create = () => {
+const Create = () => {
   const { data, status } = useSession();
   const router = useRouter();
 
@@ -159,4 +159,4 @@ const create = () => {
   );
 };
 
-export default create;
+export default Create;
