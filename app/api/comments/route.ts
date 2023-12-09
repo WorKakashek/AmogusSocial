@@ -1,6 +1,6 @@
+import { getAuthSession } from "@/utils/auth";
 import { prisma } from "@/utils/connect";
 import { NextResponse } from "next/server";
-import { getAuthSession } from "../auth/[...nextauth]/route";
 
 // get all comments
 export const GET = async (req: any) => {
