@@ -15,7 +15,6 @@ export const GET = async () => {
 export const POST = async (req: any) => {
   const session = await getAuthSession();
   if (!session) {
-    console.log("залупа");
     return new NextResponse(JSON.stringify({ message: "Not auth" }));
   }
 

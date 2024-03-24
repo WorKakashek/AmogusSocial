@@ -100,7 +100,7 @@ const Create = () => {
         title: title,
         desc: desc,
         img: media,
-        slug: slugify(title),
+        slug: title,
       }),
     });
   };
